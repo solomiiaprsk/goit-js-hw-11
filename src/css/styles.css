@@ -23,3 +23,75 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+/* styles.css */
+
+.search-form {
+  margin-bottom:25px;
+}
+
+.search-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4E75FF;;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="submit"]:hover {
+  background-color: #6C8CFF;
+}
+
+button[type="submit"]:focus {
+  outline: none;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+   
+}
+
+.img-container {
+  overflow: hidden;
+  border-radius: 8px;
+flex-direction: column;
+width: 400px;
+}
+
+.img-container img {
+  object-fit: cover;
+  width: 400px;
+  height:240px;
+}
+
+.img-card {
+  margin-left: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.img-des {
+  margin: 5px 0;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
