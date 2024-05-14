@@ -3,6 +3,8 @@ import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+import { imgTemplate } from "./js/render-functions";
+import { getImages } from "./js/pixabay-api";
 
 const searchForm = document.querySelector('.search-form');
 const searchInput = document.querySelector('#searchInput');
@@ -10,21 +12,6 @@ const searchBtn = document.querySelector('.searchBtn');
 const galleryList = document.querySelector('ul.gallery');
 const loaderEl = document.querySelector(".loader");
 
-
-function getImages(query) {
-    const BASE_URL = 'https://pixabay.com/api/';
-    const API_KEY = '43849659-9c68b2f1fcc3f13b9ce5bf5a4';
-    const params = new URLSearchParams({
-        q: query,
-        image_type: "photo",
-        orientation: "horizontal",
-        safesearch: "true",
-    });
-    const url = `${BASE_URL}?key=${API_KEY}&${params}`;
-    
-    return fetch(url).then(res => res.json());
-    
-};
 
     function validateSearchField() {
         if (searchInput.value.trim() === '') {
@@ -34,7 +21,7 @@ function getImages(query) {
       position: "topRight",
     });
         }
-    
+        return true;
     }
 
     function handleSubmit(event) {
@@ -78,41 +65,7 @@ searchForm.addEventListener('submit', e => {
 
 
 
-function imgTemplate(images) {
-  const markUp = images
-    .map(
-      image => `<li class="img-container">
-  <a
-    href=${image.largeImageURL}
-    ><img
-      src=${image.webformatURL}
-      alt=${image.tags}
-  /></a>
-  <ul class="img-card">
-    <li class="img-des">
-      <p><b>Likes</b> ${image.likes}</p>
-    </li>
-    <li class="img-des">
-      <p><b>Views</b> ${image.views}</p>
-    </li>
-    <li class="img-des">
-      <p><b>Comments</b> ${image.comments}</p>
-    </li>
-    <li class="img-des">
-      <p><b>Downloads</b> ${image.downloads}</p>
-    </li>
-  </ul>
-</li>
-`
-    )
-    .join(' ');
-    galleryList.insertAdjacentHTML("beforeend", markUp);
-    const lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionDelay: 250
-});
-lightbox.refresh();
-}
+
 
       
           
