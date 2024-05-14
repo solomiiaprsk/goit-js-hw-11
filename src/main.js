@@ -28,10 +28,13 @@ function getImages(query) {
 
     function validateSearchField() {
         if (searchInput.value.trim() === '') {
-            alert('Searchfield empty. Please fill it out before clicking "Search"');
-            return false;
+            return iziToast.warning({
+      title: "Caution",
+      message: "Searchfield empty. Please fill it out",
+      position: "topRight",
+    });
         }
-        return true;
+    
     }
 
     function handleSubmit(event) {
